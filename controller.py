@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import *
 from view import *
+from typing import TextIO
 
 
 QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
@@ -117,7 +118,10 @@ class Controller(QStackedWidget, Ui_ShoppingTool):
             self.label_errorDel.setText("You need to type an Item's name")
         
     
-    def printBill(self) -> None:
+    def printBill(self) -> TextIO:
+        '''
+        Prints the items, their prices and a total
+        '''
         if len(self.Input_billName.text()) > 0:
             try:
                 fileName = self.Input_billName.text().strip() + ".txt"
